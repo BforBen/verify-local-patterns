@@ -1,6 +1,6 @@
 var express = require('express')
 var fs = require('fs')
-var marked = require('marked')
+//var marked = require('marked')
 var path = require('path')
 var router = express.Router()
 var utils = require('../lib/utils.js')
@@ -18,7 +18,7 @@ router.get('/install', function (req, res) {
 })
 
 // Pages in install folder are markdown
-router.get('/install/:page', function (req, res) {
+/*router.get('/install/:page', function (req, res) {
   // If the link already has .md on the end (for GitHub docs)
   // remove this when we render the page
   if (req.params.page.slice(-3).toLowerCase() === '.md') {
@@ -26,9 +26,9 @@ router.get('/install/:page', function (req, res) {
   }
   redirectMarkdown(req.params.page, res)
   var doc = fs.readFileSync(path.join(__dirname, '/documentation/install/', req.params.page + '.md'), 'utf8')
-  var html = marked(doc)
+  var html = marked.parse(doc)
   res.render('install_template', {'document': html})
-})
+})*/
 
 // Examples - exampes post here
 router.post('/tutorials-and-examples', function (req, res) {
