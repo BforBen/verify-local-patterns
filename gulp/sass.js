@@ -6,7 +6,7 @@
 */
 
 var gulp = require('gulp')
-var sass = require('gulp-sass')
+var sass = require('gulp-sass')(require('node-sass'))
 var sourcemaps = require('gulp-sourcemaps')
 
 var config = require('./config.json')

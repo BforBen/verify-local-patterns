@@ -6,7 +6,7 @@
 
 var gulp = require('gulp')
 var mocha = require('gulp-mocha')
-var runSequence = require('run-sequence')
+var runSequence = require('gulp4-run-sequence')
 
 gulp.task('default', function (done) {
   runSequence('generate-assets',
@@ -23,16 +23,17 @@ gulp.task('generate-assets', function (done) {
                 'copy-documentation-assets', done)
 })
 
-gulp.task('copy-govuk-modules', [
+gulp.task('copy-govuk-modules', gulp.series(
   'copy-toolkit',
   'copy-template-assets',
   'copy-elements-sass',
-  'copy-template'
-])
+  'copy-template')
+)
 
 gulp.task('watch', function (done) {
-  runSequence('watch-sass',
-               'watch-assets', done)
+  done();
+  /*runSequence('watch-sass',
+               'watch-assets', done)*/
 })
 
 gulp.task('test', function () {
