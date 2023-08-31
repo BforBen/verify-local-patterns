@@ -1,0 +1,10 @@
+name: "Keep prototype alive"
+on:
+  schedule:
+    - cron: "0 8-22 * * MON-FRI"
+jobs:
+  run-updater:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Load site
+      run: curl -X GET "https://verify-local-patterns.onrender.com/"
